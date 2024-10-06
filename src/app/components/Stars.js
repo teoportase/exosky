@@ -16,8 +16,11 @@ function Stars() {
   const startYRef = useRef(0);
   const alertShownRef = useRef(false);
 
-  const searchParams = useSearchParams();
-  const hostname = searchParams.get("hostname");
+  const searchParams = useSearchParams(); // Initialize useSearchParams
+  const pl_name = searchParams.get("pl_name");
+  const hostname = searchParams.get("hostname"); // Access hostname from the query
+  const sy_dist = searchParams.get("sy_dist");
+  const pl_orbper = searchParams.get("pl_orbper");
 
   useEffect(() => {
     if (!alertShownRef.current) {
@@ -110,16 +113,23 @@ function Stars() {
   };
 
   return (
-    <div className="bg-black">
+
+    <div  className="bg-black">
       <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
       >
+        <p className="text-accent text-4xl text-center font-kanit font-bold"
+          style={{
+            marginBottom: "15px",
+            padding: "10px 20px",
+          }}
+        > Planet { pl_name }&apos;s sky </p>
         <div
           id="aladin-lite-div"
           style={{
@@ -145,18 +155,40 @@ function Stars() {
           onMouseUp={stopDrawing}
           onMouseLeave={stopDrawing}
         />
+    
+        <div className="flex">
+          <p className="text-white text-xl text-center font-kanit font-thin"
+            style={{
+              marginTop: "15px",
+              padding: "10px 20px",
+            }}
+          >
+            Distance from Earth: { sy_dist } parsecs
+          </p>
 
-        <button
-          className="bg-white text-black"
-          onClick={toggleInteractive}
-          style={{
-            marginTop: "20px",
-            padding: "10px 20px",
-            cursor: "pointer",
-          }}
-        >
-          {isInteractive ? "Start Drawing" : "Stop Drawing"}
-        </button>
+          <button
+            onClick={toggleInteractive}
+            className="text-white text-xl text-center font-kanit"
+            style={{
+              marginTop: "15px",
+              padding: "10px 20px",
+              cursor: "pointer",
+              border: "2px solid white",
+            }}
+          >
+            {isInteractive ? "Start Drawing" : "Stop Drawing"}
+          </button>
+
+          <p className="text-white text-xl text-center font-kanit font-thin"
+            style={{
+              marginTop: "15px",
+              padding: "10px 20px",
+            }}
+          >
+            Year length: { pl_orbper } Earth days
+          </p>
+
+        </div>
       </div>
     </div>
   );

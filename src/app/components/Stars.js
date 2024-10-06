@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic";
 
-export default function Stars() {
+function Stars() {
   const [isInteractive, setIsInteractive] = useState(true);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
   const canvasRef = useRef(null);
@@ -160,3 +161,5 @@ export default function Stars() {
     </div>
   );
 }
+
+export default dynamic(() => Promise.resolve(Stars), { ssr: false });

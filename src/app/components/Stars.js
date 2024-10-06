@@ -1,9 +1,10 @@
-"use client"; // You need to ensure that this component runs on the client side.
+"use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams } from "next/navigation"; // Import useSearchParams
+import { useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic";
 
-export default function Stars() {
+function Stars() {
   const [isInteractive, setIsInteractive] = useState(true);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
   const canvasRef = useRef(null);
@@ -13,6 +14,7 @@ export default function Stars() {
   const isDrawingRef = useRef(false);
   const startXRef = useRef(0);
   const startYRef = useRef(0);
+  const alertShownRef = useRef(false);
 
   const searchParams = useSearchParams(); // Initialize useSearchParams
   const pl_name = searchParams.get("pl_name");
@@ -21,9 +23,11 @@ export default function Stars() {
   const pl_orbper = searchParams.get("pl_orbper");
 
   useEffect(() => {
-    if (hostname) {
-      // Do something with the hostname, e.g., log it
-      console.log("Hostname:", hostname);
+    if (!alertShownRef.current) {
+      alert(
+        "Welcome to the Stars page! Press 'Start Drawing' hold your left mouse button to draw on the canvas and right click to open the screenshot menu. "
+      );
+      alertShownRef.current = true;
     }
 
     const script = document.createElement("script");
@@ -36,11 +40,10 @@ export default function Stars() {
           survey: "P/DSS2/color",
           fov: 1,
           projection: "STG",
-          showProjectionControl: false,
+          showCooGridControl: true,
           showFullscreenControl: false,
-          showLayersControl: false,
-          showFrame: false,
-          target: hostname || "12 20 42.91 +17 47 35.71", // Use hostname or a default target
+          target: hostname || "12 20 42.91 +17 47 35.71",
+          showContextMenu: true,
         });
       });
     };
@@ -63,7 +66,7 @@ export default function Stars() {
     offscreenCanvas.height = canvasSize.height;
     offscreenCanvasRef.current = offscreenCanvas;
     offscreenCtxRef.current = offscreenCanvas.getContext("2d");
-  }, [canvasSize.width, canvasSize.height, hostname]); // Include hostname in the dependency array
+  }, [canvasSize.width, canvasSize.height, hostname]);
 
   const toggleInteractive = () => {
     setIsInteractive(!isInteractive);
@@ -110,7 +113,8 @@ export default function Stars() {
   };
 
   return (
-    <div>
+
+    <div  className="bg-black">
       <div
       style={{
         display: "flex",
@@ -151,7 +155,7 @@ export default function Stars() {
           onMouseUp={stopDrawing}
           onMouseLeave={stopDrawing}
         />
-
+    
         <div className="flex">
           <p className="text-white text-xl text-center font-kanit font-thin"
             style={{
@@ -189,3 +193,5 @@ export default function Stars() {
     </div>
   );
 }
+
+export default dynamic(() => Promise.resolve(Stars), { ssr: false });

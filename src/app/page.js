@@ -21,7 +21,7 @@ export default function Home() {
           </h1>
         </div>
       </div>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center p-4">
         {all_info.map((planet, index) => (
           <Planet key={index} planet={planet} />
         ))}

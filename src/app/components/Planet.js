@@ -16,13 +16,15 @@ import planet4 from "@/app/images/mercury-transparent.png";
 
 function Planet(props) {
   const [isShown, setIsShown] = useState(false);
-  console.log(isShown);
 
-  let planetData = [];
+  const visibleStyle = {
+    zIndex: 9999,
+    position: "absolute",
+  };
 
-  for (let i; (i = 0); i < props.number - 1) {
-    planetData.push(Data[i]);
-  }
+  const hiddenStyle = {
+    display: "none",
+  };
 
   return (
     <div>
@@ -44,7 +46,7 @@ function Planet(props) {
           </Link>
         </div>
       </div>
-      <div className={isShown ? "visible" : "hidden"}>
+      <div style={isShown ? visibleStyle : hiddenStyle}>
         <PlanetInfo planet={props.planet} />
       </div>
     </div>

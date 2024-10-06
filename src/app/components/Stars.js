@@ -38,7 +38,7 @@ export default function Stars() {
           projection: "STG",
           showCooGridControl: true,
           showFullscreenControl: false,
-          target: hostname,
+          target: hostname || "12 20 42.91 +17 47 35.71",
           showContextMenu: true,
         });
       });

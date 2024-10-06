@@ -13,6 +13,7 @@ export default function Home() {
         const aladin = A.aladin("#aladin-lite-div", {
           survey: "P/DSS2/color",
           fov: 1,
+          projection: "STG",
           target: "12 20 42.91 +17 47 35.71",
         });
       });

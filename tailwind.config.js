@@ -10,6 +10,11 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        white: "#F9F4F1",
+        accent: "#197278",
+      },
+      fontFamily: {
+        Oswold: ["Oswold", "sans-serif"],
       },
     },
   },

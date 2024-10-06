@@ -21,7 +21,7 @@ export default function Stars() {
   useEffect(() => {
     if (!alertShownRef.current) {
       alert(
-        "Welcome to the Stars page! Press 'Start Drawing' and use your mouse to draw on the canvas."
+        "Welcome to the Stars page! Press 'Start Drawing' and hold your left mouse button to draw on the canvas."
       );
       alertShownRef.current = true;
     }
@@ -36,10 +36,8 @@ export default function Stars() {
           survey: "P/DSS2/color",
           fov: 1,
           projection: "STG",
-          showProjectionControl: false,
+          showCooGridControl: true,
           showFullscreenControl: false,
-          showLayersControl: false,
-          showFrame: false,
           target: hostname,
         });
       });

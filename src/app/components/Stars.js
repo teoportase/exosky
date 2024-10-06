@@ -108,51 +108,54 @@ export default function Stars() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
+    <div className="bg-black">
       <div
-        id="aladin-lite-div"
         style={{
-          width: "100%",
-          height: "80%",
-          pointerEvents: isInteractive ? "auto" : "none",
-        }}
-      ></div>
-
-      <canvas
-        ref={canvasRef}
-        width={canvasSize.width}
-        height={canvasSize.height}
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          pointerEvents: isInteractive ? "none" : "auto",
-          border: isInteractive ? "none" : "1px solid black",
-        }}
-        onMouseDown={startDrawing}
-        onMouseMove={drawLine}
-        onMouseUp={stopDrawing}
-        onMouseLeave={stopDrawing}
-      />
-
-      <button
-        onClick={toggleInteractive}
-        style={{
-          marginTop: "20px",
-          padding: "10px 20px",
-          cursor: "pointer",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
         }}
       >
-        {isInteractive ? "Start Drawing" : "Stop Drawing"}
-      </button>
+        <div
+          id="aladin-lite-div"
+          style={{
+            width: "100%",
+            height: "80%",
+            pointerEvents: isInteractive ? "auto" : "none",
+          }}
+        ></div>
+
+        <canvas
+          ref={canvasRef}
+          width={canvasSize.width}
+          height={canvasSize.height}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            pointerEvents: isInteractive ? "none" : "auto",
+            border: isInteractive ? "none" : "1px solid black",
+          }}
+          onMouseDown={startDrawing}
+          onMouseMove={drawLine}
+          onMouseUp={stopDrawing}
+          onMouseLeave={stopDrawing}
+        />
+
+        <button
+          className="bg-white"
+          onClick={toggleInteractive}
+          style={{
+            marginTop: "20px",
+            padding: "10px 20px",
+            cursor: "pointer",
+          }}
+        >
+          {isInteractive ? "Start Drawing" : "Stop Drawing"}
+        </button>
+      </div>
     </div>
   );
 }

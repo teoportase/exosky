@@ -21,7 +21,7 @@ export default function Stars() {
   useEffect(() => {
     if (!alertShownRef.current) {
       alert(
-        "Welcome to the Stars page! Press 'Start Drawing' and hold your left mouse button to draw on the canvas."
+        "Welcome to the Stars page! Press 'Start Drawing' hold your left mouse button to draw on the canvas and right click to open the screenshot menu. "
       );
       alertShownRef.current = true;
     }
@@ -39,6 +39,7 @@ export default function Stars() {
           showCooGridControl: true,
           showFullscreenControl: false,
           target: hostname,
+          showContextMenu: true,
         });
       });
     };
@@ -145,7 +146,7 @@ export default function Stars() {
         />
 
         <button
-          className="bg-white"
+          className="bg-white text-black"
           onClick={toggleInteractive}
           style={{
             marginTop: "20px",

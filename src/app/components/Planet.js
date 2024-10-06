@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
+import Link from "next/link";
+
 import PlanetInfo from "./PlanetInfo";
 
 import planet1 from "@/app/images/venus-transparent.png";
@@ -26,7 +28,12 @@ function Planet(props) {
     <div>
       <div className="grid lg:grid-flow-col lg:auto-cols-max grid-cols-2">
         <div className="size-32">
-          <a href="/" className="">
+          <Link
+            href={{
+              pathname: "/stars",
+              query: { hostname: props.planet.hostname },
+            }}
+          >
             <Image
               src={planet1}
               alt="planet"
@@ -34,7 +41,7 @@ function Planet(props) {
               onMouseEnter={() => setIsShown(true)}
               onMouseLeave={() => setIsShown(false)}
             />
-          </a>
+          </Link>
         </div>
       </div>
       <div className={isShown ? "visible" : "hidden"}>

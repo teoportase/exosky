@@ -20,7 +20,7 @@ function Planet() {
     <div>
       <div className="grid lg:grid-flow-col lg:auto-cols-max grid-cols-2 gap-12">
         <div className="size-32">
-          <a href="/" className="">
+          <a href="/stars" className="">
             <Image
               src={planet1}
               alt="planet"

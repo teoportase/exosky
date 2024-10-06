@@ -34,7 +34,6 @@ export default function Stars() {
     };
     document.body.appendChild(script);
 
-    // Set canvas size on client side
     if (typeof window !== "undefined") {
       setCanvasSize({
         width: window.innerWidth,

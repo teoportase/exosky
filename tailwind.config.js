@@ -14,7 +14,8 @@ module.exports = {
         accent: "#197278",
       },
       fontFamily: {
-        Oswold: ["Oswold", "sans-serif"],
+        oswald: ["var(--font-oswald)"],
+        kanit: ["var(--font-kanit)"],
       },
     },
   },

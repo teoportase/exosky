@@ -2,7 +2,7 @@ import Planet from "@/app/components/Planet.js";
 import Data from "../../data/exoplanet_archive.json";
 
 export default function Home() {
-  const numberOfPlanets = 8;
+  const numberOfPlanets = 20;
   let all_info = [];
 
   for (let i = 0; i < numberOfPlanets; i++) {
@@ -10,8 +10,8 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-black h-screen w-full overflow-hidden">
-      <div className="flex justify-center">
+    <div className="bg-black h-screen w-full overflow-auto">
+      <div className="flex flex-wrap justify-center">
         <div className="flex-row justify-center p-4">
           <h1 className="text-white text-7xl font-oswald font-bold justify-center text-center">
             E X O S K Y

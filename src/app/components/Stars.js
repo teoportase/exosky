@@ -4,6 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 
+function isUnknown(property) {
+  return property != -1 ? property : "Unknown";
+}
+
 function Stars() {
   const [isInteractive, setIsInteractive] = useState(true);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
@@ -163,7 +167,7 @@ function Stars() {
               padding: "10px 20px",
             }}
           >
-            Distance from Earth: { sy_dist } parsecs
+            Distance from Earth: { isUnknown(sy_dist) } parsecs
           </p>
 
           <button
@@ -185,7 +189,7 @@ function Stars() {
               padding: "10px 20px",
             }}
           >
-            Year length: { pl_orbper } Earth days
+            Year length: { isUnknown(pl_orbper) } Earth days
           </p>
 
         </div>

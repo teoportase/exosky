@@ -1,6 +1,7 @@
-"use client";
+"use client"; // You need to ensure that this component runs on the client side.
 
 import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation"; // Import useSearchParams
 
 export default function Stars() {
   const [isInteractive, setIsInteractive] = useState(true);
@@ -13,7 +14,15 @@ export default function Stars() {
   const startXRef = useRef(0);
   const startYRef = useRef(0);
 
+  const searchParams = useSearchParams(); // Initialize useSearchParams
+  const hostname = searchParams.get("hostname"); // Access hostname from the query
+
   useEffect(() => {
+    if (hostname) {
+      // Do something with the hostname, e.g., log it
+      console.log("Hostname:", hostname);
+    }
+
     const script = document.createElement("script");
     script.src =
       "https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js";
@@ -28,7 +37,7 @@ export default function Stars() {
           showFullscreenControl: false,
           showLayersControl: false,
           showFrame: false,
-          target: "12 20 42.91 +17 47 35.71",
+          target: hostname || "12 20 42.91 +17 47 35.71", // Use hostname or a default target
         });
       });
     };
@@ -51,7 +60,7 @@ export default function Stars() {
     offscreenCanvas.height = canvasSize.height;
     offscreenCanvasRef.current = offscreenCanvas;
     offscreenCtxRef.current = offscreenCanvas.getContext("2d");
-  }, [canvasSize.width, canvasSize.height]);
+  }, [canvasSize.width, canvasSize.height, hostname]); // Include hostname in the dependency array
 
   const toggleInteractive = () => {
     setIsInteractive(!isInteractive);
@@ -141,7 +150,7 @@ export default function Stars() {
           cursor: "pointer",
         }}
       >
-        {isInteractive ? "Disable Interaction" : "Enable Interaction"}
+        {isInteractive ? "Start Drawing" : "Stop Drawing"}
       </button>
     </div>
   );

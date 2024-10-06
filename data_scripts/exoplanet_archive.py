@@ -1,5 +1,6 @@
 import pyvo as vo
 import json
+import numpy
 
 archive = vo.dal.TAPService("https://exoplanetarchive.ipac.caltech.edu/TAP")
 
@@ -30,11 +31,11 @@ for result in resultset:
         "pl_name": result["pl_name"],
         "hostname": result["hostname"],
         "sy_snum": int(result["sy_snum"]),
-        "pl_orbper": result["pl_orbper"],
-        "pl_rade": result["pl_rade"],
+        "pl_orbper": -1 if numpy.isnan(result["pl_orbper"]) else result["pl_orbper"],
+        "pl_rade": -1 if numpy.isnan(result["pl_rade"]) else result["pl_rade"],
         "ra": result["ra"],
         "dec": result["dec"],
-        "sy_dist": result["sy_dist"]
+        "sy_dist": -1 if numpy.isnan(result["sy_dist"]) else result["sy_dist"]
     }
     all_info.append(row)
 

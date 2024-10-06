@@ -11,17 +11,17 @@ function PlanetInfo(props) {
         </div>
         <div className="flex justify-between">
           <p className="text-black text-lg">1 Year length:</p>
-          <p className="text-black text-lg">{props.planet.pl_orbper}</p>
+          <p className="text-black text-lg">{ (props.planet.pl_orbper != -1) ? props.planet.pl_orbper : "Unknown"}</p>
         </div>
         <div className="flex justify-between">
           <p className="text-black text-lg whitespace-nowrap mr-5">
             Distance to Earth:
           </p>
-          <p className="text-black text-lg">{props.planet.sy_dist}</p>
+          <p className="text-black text-lg">{ (props.planet.sy_dist != -1) ? props.planet.sy_dist : "Unknown" }</p>
         </div>
         <div className="flex justify-between">
           <p className="text-black text-lg">Size:</p>
-          <p className="text-black text-lg">{props.planet.pl_rade}</p>
+          <p className="text-black text-lg">{ (props.planet.pl_rade != -1) ? props.planet.pl_rade : "Unknown"}</p>
         </div>
         <div className="flex justify-between">
           <p className="text-black text-lg">Stars:</p>

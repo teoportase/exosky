@@ -1,5 +1,9 @@
 import React from "react";
 
+function isUnknown(property) {
+  return property != -1 ? property : "Unknown";
+}
+
 function PlanetInfo(props) {
   return (
     <div className="bg-white p-6 rounded-md">
@@ -11,17 +15,17 @@ function PlanetInfo(props) {
         </div>
         <div className="flex justify-between">
           <p className="text-black text-lg">1 Year length:</p>
-          <p className="text-black text-lg">{ (props.planet.pl_orbper != -1) ? props.planet.pl_orbper : "Unknown"}</p>
+          <p className="text-black text-lg">{ isUnknown(props.planet.pl_orbper) }</p>
         </div>
         <div className="flex justify-between">
           <p className="text-black text-lg whitespace-nowrap mr-5">
             Distance to Earth:
           </p>
-          <p className="text-black text-lg">{ (props.planet.sy_dist != -1) ? props.planet.sy_dist : "Unknown" }</p>
+          <p className="text-black text-lg">{ isUnknown(props.planet.sy_dist) }</p>
         </div>
         <div className="flex justify-between">
           <p className="text-black text-lg">Size:</p>
-          <p className="text-black text-lg">{ (props.planet.pl_rade != -1) ? props.planet.pl_rade : "Unknown"}</p>
+          <p className="text-black text-lg">{ isUnknown(props.planet.pl_rade) }</p>
         </div>
         <div className="flex justify-between">
           <p className="text-black text-lg">Stars:</p>

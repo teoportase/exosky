@@ -12,13 +12,19 @@ import planet4 from "@/app/images/mercury-transparent.png";
 
 //maybe make this automatic for planets we have
 
-function Planet() {
+function Planet(props) {
   const [isShown, setIsShown] = useState(false);
   console.log(isShown);
 
+  let planetData = [];
+
+  for (let i; (i = 0); i < props.number - 1) {
+    planetData.push(Data[i]);
+  }
+
   return (
     <div>
-      <div className="grid lg:grid-flow-col lg:auto-cols-max grid-cols-2 gap-12">
+      <div className="grid lg:grid-flow-col lg:auto-cols-max grid-cols-2">
         <div className="size-32">
           <a href="/" className="">
             <Image
@@ -32,7 +38,7 @@ function Planet() {
         </div>
       </div>
       <div className={isShown ? "visible" : "hidden"}>
-        <PlanetInfo />
+        <PlanetInfo planet={props.planet} />
       </div>
     </div>
   );

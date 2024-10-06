@@ -107,7 +107,8 @@ export default function Stars() {
   };
 
   return (
-    <div
+    <div>
+      <div
       style={{
         display: "flex",
         flexDirection: "column",
@@ -115,43 +116,58 @@ export default function Stars() {
         alignItems: "center",
         height: "100vh",
       }}
-    >
-      <div
-        id="aladin-lite-div"
-        style={{
-          width: "100%",
-          height: "80%",
-          pointerEvents: isInteractive ? "auto" : "none",
-        }}
-      ></div>
-
-      <canvas
-        ref={canvasRef}
-        width={canvasSize.width}
-        height={canvasSize.height}
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          pointerEvents: isInteractive ? "none" : "auto",
-          border: isInteractive ? "none" : "1px solid black",
-        }}
-        onMouseDown={startDrawing}
-        onMouseMove={drawLine}
-        onMouseUp={stopDrawing}
-        onMouseLeave={stopDrawing}
-      />
-
-      <button
-        onClick={toggleInteractive}
-        style={{
-          marginTop: "20px",
-          padding: "10px 20px",
-          cursor: "pointer",
-        }}
       >
-        {isInteractive ? "Start Drawing" : "Stop Drawing"}
-      </button>
+        <p> View from Planet</p>
+        <div
+          id="aladin-lite-div"
+          style={{
+            width: "100%",
+            height: "80%",
+            pointerEvents: isInteractive ? "auto" : "none",
+          }}
+        ></div>
+
+        <canvas
+          ref={canvasRef}
+          width={canvasSize.width}
+          height={canvasSize.height}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            pointerEvents: isInteractive ? "none" : "auto",
+            border: isInteractive ? "none" : "1px solid black",
+          }}
+          onMouseDown={startDrawing}
+          onMouseMove={drawLine}
+          onMouseUp={stopDrawing}
+          onMouseLeave={stopDrawing}
+        />
+
+        <div className="flex">
+          <p>
+            Planet X orbits around the X star, which is the star you started centered on. <br></br>
+            It is more than X lightyears away from Earth!
+          </p>
+
+          <button
+            onClick={toggleInteractive}
+            style={{
+              marginTop: "20px",
+              padding: "10px 20px",
+              cursor: "pointer",
+            }}
+          >
+            {isInteractive ? "Start Drawing" : "Stop Drawing"}
+          </button>
+
+          <p>
+            Size: X times smaller/larger than Earth <br></br>
+            Year length: X Earth days
+          </p>
+          
+        </div>
+      </div>
     </div>
   );
 }

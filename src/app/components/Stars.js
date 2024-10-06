@@ -15,7 +15,10 @@ export default function Stars() {
   const startYRef = useRef(0);
 
   const searchParams = useSearchParams(); // Initialize useSearchParams
+  const pl_name = searchParams.get("pl_name");
   const hostname = searchParams.get("hostname"); // Access hostname from the query
+  const sy_dist = searchParams.get("sy_dist");
+  const pl_orbper = searchParams.get("pl_orbper");
 
   useEffect(() => {
     if (hostname) {
@@ -117,7 +120,12 @@ export default function Stars() {
         height: "100vh",
       }}
       >
-        <p> View from Planet</p>
+        <p className="text-accent text-4xl text-center font-kanit font-bold"
+          style={{
+            marginBottom: "15px",
+            padding: "10px 20px",
+          }}
+        > Planet { pl_name }&apos;s sky </p>
         <div
           id="aladin-lite-div"
           style={{
@@ -145,27 +153,37 @@ export default function Stars() {
         />
 
         <div className="flex">
-          <p>
-            Planet X orbits around the X star, which is the star you started centered on. <br></br>
-            It is more than X lightyears away from Earth!
+          <p className="text-white text-xl text-center font-kanit font-thin"
+            style={{
+              marginTop: "15px",
+              padding: "10px 20px",
+            }}
+          >
+            Distance from Earth: { sy_dist } parsecs
           </p>
 
           <button
             onClick={toggleInteractive}
+            className="text-white text-xl text-center font-kanit"
             style={{
-              marginTop: "20px",
+              marginTop: "15px",
               padding: "10px 20px",
               cursor: "pointer",
+              border: "2px solid white",
             }}
           >
             {isInteractive ? "Start Drawing" : "Stop Drawing"}
           </button>
 
-          <p>
-            Size: X times smaller/larger than Earth <br></br>
-            Year length: X Earth days
+          <p className="text-white text-xl text-center font-kanit font-thin"
+            style={{
+              marginTop: "15px",
+              padding: "10px 20px",
+            }}
+          >
+            Year length: { pl_orbper } Earth days
           </p>
-          
+
         </div>
       </div>
     </div>

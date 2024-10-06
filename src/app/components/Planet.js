@@ -31,7 +31,12 @@ function Planet(props) {
           <Link
             href={{
               pathname: "/stars",
-              query: { hostname: props.planet.hostname },
+              query: {
+                pl_name: props.planet.pl_name,
+                hostname: props.planet.hostname,
+                sy_dist: props.planet.sy_dist,
+                pl_orbper: props.planet.pl_orbper
+              },
             }}
           >
             <Image
